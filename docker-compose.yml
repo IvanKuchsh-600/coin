@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${PG_PORT}:5432"
+    volumes:
+      - ./deployment/migrations/postgres:/docker-entrypoint-initdb.d
+  coinapp:
+    container_name: coin
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+
+
+

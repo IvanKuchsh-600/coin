@@ -1,0 +1,7 @@
+BEGIN;
+CREATE TABLE IF NOT EXISTS coins (
+    title VARCHAR(50) NOT NULL,
+    price REAL NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+END;

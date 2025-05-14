@@ -1,0 +1,157 @@
+definitions:
+  dto.CoinDTO:
+    properties:
+      create_time:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /v1/get_avg_rate:
+    get:
+      consumes:
+      - application/json
+      description: Get the avg rate of specified coins
+      parameters:
+      - description: Comma-separated list of cryptocurrencies
+        in: query
+        name: fsyms
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.CoinDTO'
+            type: array
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: No coins found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get avg rate
+      tags:
+      - coins
+  /v1/get_current_rate:
+    get:
+      consumes:
+      - application/json
+      description: Get the current rate of specified coins
+      parameters:
+      - description: Comma-separated list of cryptocurrencies
+        in: query
+        name: fsyms
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of cryptocurrencies
+          schema:
+            items:
+              $ref: '#/definitions/dto.CoinDTO'
+            type: array
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Get current rate
+      tags:
+      - coins
+  /v1/get_max_rate:
+    get:
+      consumes:
+      - application/json
+      description: Get the max rate of specified coins
+      parameters:
+      - description: Comma-separated list of cryptocurrencies
+        in: query
+        name: fsyms
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.CoinDTO'
+            type: array
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: No coins found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get max rate
+      tags:
+      - coins
+  /v1/get_min_rate:
+    get:
+      consumes:
+      - application/json
+      description: Get the min rate of specified coins
+      parameters:
+      - description: Comma-separated list of cryptocurrencies
+        in: query
+        name: fsyms
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.CoinDTO'
+            type: array
+        "400":
+          description: Invalid input
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: No coins found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get min rate
+      tags:
+      - coins
+swagger: "2.0"

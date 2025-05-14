@@ -1,0 +1,9 @@
+port: "8080"
+
+database:
+  connStr: "postgres://postgres:12345go@db:5432/postgres?sslmode=disable"
+
+externalAPI:
+  url: "https://min-api.cryptocompare.com/data/pricemulti?tsyms=RUB&extraParams=coin&fsyms"
+  baseUrlParams:
+    fsyms: [ "BTC", "ETH" ]
