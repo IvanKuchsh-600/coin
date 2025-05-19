@@ -145,7 +145,7 @@ func (s *Server) GetMaxPriceHandler(rw http.ResponseWriter, req *http.Request) {
 	for _, coin := range coins {
 		coinsDTO = append(coinsDTO, dto.CoinDTO{
 			Title:      coin.Title,
-			Price:      coin.Price,
+			Price:      math.Round(coin.Price*100) / 100,
 			CreateTime: coin.CreateTime.Format("2006-02-02"),
 		})
 	}
@@ -195,7 +195,7 @@ func (s *Server) GetMinPriceHandler(rw http.ResponseWriter, req *http.Request) {
 	for _, coin := range coins {
 		coinsDTO = append(coinsDTO, dto.CoinDTO{
 			Title:      coin.Title,
-			Price:      coin.Price,
+			Price:      math.Round(coin.Price*100) / 100,
 			CreateTime: coin.CreateTime.Format("2006-02-02"),
 		})
 	}
@@ -243,7 +243,7 @@ func (s *Server) GetAvgPriceHandler(rw http.ResponseWriter, req *http.Request) {
 	for _, coin := range coins {
 		coinsDTO = append(coinsDTO, dto.CoinDTO{
 			Title:      coin.Title,
-			Price:      coin.Price,
+			Price:      math.Round(coin.Price*100) / 100,
 			CreateTime: coin.CreateTime.Format("2006-02-02"),
 		})
 	}

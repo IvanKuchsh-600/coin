@@ -2,8 +2,10 @@ package usecases
 
 import (
 	"context"
-	"currency/internal/entities"
 	"fmt"
+
+	"currency/internal/entities"
+
 	"github.com/pkg/errors"
 )
 
@@ -62,7 +64,6 @@ func WithAvgFunc() Option {
 func (s *Service) GetLastPrice(ctx context.Context, titles []string) ([]entities.Coin, error) {
 	coins, err := s.storage.Get(ctx, titles)
 	if errors.Is(err, entities.ErrInvalidParams) {
-		fmt.Println("GetLastPrice: invalid params")
 		return nil, errors.Wrap(entities.ErrInvalidParams, "incorrect parameters")
 	}
 	if err != nil {
@@ -120,9 +121,8 @@ func (s *Service) GetCoinsFromAPI(ctx context.Context, titles ...string) ([]enti
 		}
 		titles = ts
 	}
-	fmt.Println(titles)
+
 	coins, err := s.client.GetCoins(ctx, titles)
-	fmt.Println(coins)
 	if err != nil {
 		return nil, errors.Wrap(entities.ErrGetFunc, "GetCoinsFromAPI")
 	}
